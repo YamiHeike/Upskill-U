@@ -1,5 +1,4 @@
 package org.example.upskillu.cli.service;
-////https://app.pluralsight.com/profile/data/author/sander-mak/all-content
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
