@@ -32,7 +32,6 @@
         var courseRetievalService = new CourseRetrievalService();
         List<PluralsightCourse> coursesToStore = courseRetievalService.getCoursesFor(authorId)
                 .stream()
-                //.filter(course -> !course.isRetired())
                 .filter(not(PluralsightCourse::isRetired))
                 .toList();
         LOG.info("Retrieved the following {} courses {}, ", coursesToStore.size(), coursesToStore);
