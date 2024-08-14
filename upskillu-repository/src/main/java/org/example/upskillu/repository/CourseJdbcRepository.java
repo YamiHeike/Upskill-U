@@ -12,7 +12,7 @@ import java.util.List;
 class CourseJdbcRepository implements CourseRepository {
     private static final String H2_DATABASE_URL = "jdbc:h2:file:%s;AUTO_SERVER=TRUE;INIT=RUNSCRIPT FROM './db_init.sql'";
     private final String INSERT_COURSE = """
-            MERGE INTO Course(id, name, length, url)
+            MERGE INTO Courses(id, name, length, url)
              VALUES(?,?,?,?)
            """;
 
@@ -27,6 +27,7 @@ class CourseJdbcRepository implements CourseRepository {
     @Override
     public void saveCourse(Course course) {
         try(Connection connection = dataSource.getConnection()) {
+            System.out.println("Got connection");
             PreparedStatement statement = connection.prepareStatement(INSERT_COURSE);
             statement.setString(1, course.id());
             statement.setString(2, course.name());
@@ -42,8 +43,7 @@ class CourseJdbcRepository implements CourseRepository {
     public List<Course> getAllCourses() {
         try(Connection connection = dataSource.getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Courses");
-
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM COURSES");
             List<Course> courses = new ArrayList<>();
 
             while (resultSet.next()) {
@@ -55,7 +55,7 @@ class CourseJdbcRepository implements CourseRepository {
             }
             return Collections.unmodifiableList(courses);
         } catch(SQLException e) {
-            throw new RepositoryException("Failed to get all courses", e);
+            throw new RepositoryException("Failed to retrieve courses", e);
         }
     }
 }
