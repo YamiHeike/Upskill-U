@@ -4,6 +4,7 @@ import org.example.upskillu.domain.Course;
 import org.example.upskillu.repository.CourseRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CourseStorageService {
     private final CourseRepository courseRepository;
@@ -18,7 +19,7 @@ public class CourseStorageService {
          Course course = new Course(pluralsightCourse.id(),
                  pluralsightCourse.title(),
                  pluralsightCourse.durationInMinutes(),
-                 PLURALSIGHT_BASE_URL + pluralsightCourse.contentUrl());
+                 PLURALSIGHT_BASE_URL + pluralsightCourse.contentUrl(), Optional.empty());
          courseRepository.saveCourse(course);
      }
     }
