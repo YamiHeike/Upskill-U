@@ -1,4 +1,4 @@
-package com.pluralsight.upskillu.server;
+package org.example.upskillu.server;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Stream;
 
 

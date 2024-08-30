@@ -1,4 +1,4 @@
-package com.pluralsight.upskillu.server;
+package org.example.upskillu.server;
 
 import org.example.upskillu.repository.CourseRepository;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
